@@ -1,0 +1,20 @@
+body { 
+    background-color: aliceblue;
+}
+
+#grid {
+    background-color: white;
+    margin: auto;
+    margin-top: 40px;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 2px 2px 15px rgb(170, 170, 170);    
+}
+
+.gridCell {
+    border: 0.1px solid black;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+}
