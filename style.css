@@ -1,13 +1,18 @@
 body { 
-    background-color: aliceblue;
+    background-color: #fff;
+    color: #AC3B61;
+    font-family: '20_dbregular';    
+    box-sizing: border-box;
+    padding: 1vh;
 }
+
+::selection {
+    background: none;
+}
+
 
 #wrapper {
     display: flex;
-}
-
-#buttonSet {
-    flex: 2;
 }
 
 #blankDiv {
@@ -16,17 +21,97 @@ body {
 
 #grid {
     flex: 2;
-    background-color: white;
-    margin-top: 3vh;
+    background-color: #EDC7B7;
+    margin-top: 2vh;
     height: 90vh;
     width: 90vh;
     display: flex;
     flex-wrap: wrap;
-    box-shadow: 2px 2px 15px rgb(170, 170, 170);    
+    box-shadow: 2px 2px 15px rgb(158, 158, 158);    
 }
 
 .gridCell {
-    border: 0.1px solid black;
     flex: 0 0 auto;
     box-sizing: border-box;
+}
+
+button {
+    display: inline-block;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight:bold;
+    font-style: normal;
+    font-size: 0.625rem;
+    letter-spacing: 0.3em;
+    color: rgba(223,190,106,0.7);
+    border-radius: 0;
+    padding: 18px 80px 20px;
+    transition: all 0.7s ease-out;
+    background: linear-gradient(270deg, rgba(223,190,106,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    cursor: pointer;
+    border: 1.5px solid rgba(223,190,106,0.3);
+    border-radius: 10px;
+  }
+
+button:hover {
+    border: 1px solid rgba(223,190,106,0);
+    color: white;
+    background-position: 99% 50%;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #EEE2DC;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #AC3B61;
+    cursor: pointer;
+}
+  
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 15vh;
+	height: 5vh;
+    border-radius: 15vh;
+
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+    border-radius: 15vh;
+}
+
+#buttonSet {
+    display: flex;
+    flex: 2;
+    flex-flow : column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+
+label {
+    display: block;
+    margin: 1.5vh;
 }
