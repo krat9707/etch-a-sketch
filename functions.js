@@ -2,26 +2,57 @@ let gridSize = document.querySelector("#gridSizeSlider");
 let penColor = document.querySelector("#penColor");
 let eraser = document.querySelector("#eraser");
 let gridsVisibleBtn = document.querySelector("#toggleGridLines");
-let visibleGrid = false;
 let rainbow = document.querySelector("#rainbowPenColor");
-let rainbowPen = false;
+let dodgeBtn = document.querySelector("#dodge");
+let burnBtn = document.querySelector("#burn");
+
+window.visibleGrid = false;
+window.rainbowPen = false;
+window.burn = false;
+window.dodge = false;
+window.eraserBool = false;
+
+const buttons = new Map([
+    ['rainbowPen', rainbow],
+    ['burn', burnBtn],
+    ['dodge', dodgeBtn],
+    ['eraserBool', eraser],
+]);
+
+function handleButtonClick(buttonName) {
+    buttons.forEach((buttonElement, buttonKey) => {
+        if (buttonKey !== buttonName) {
+            buttonElement.classList.remove('activeBtn');
+            window[buttonKey] = false;
+        }
+    });
+
+    const currentButton = buttons.get(buttonName);
+    window[buttonName] = !window[buttonName];
+    console.log(buttonName);
+    currentButton.classList.toggle('activeBtn');
+} 
 
 gridSize.addEventListener('input', makeGrid);
-eraser.addEventListener('click', () => penColor.value = "#EDC7B7");
-rainbow.addEventListener('click', () => rainbowPen = !rainbowPen);
+eraser.addEventListener('click', () => {handleButtonClick('eraserBool'), penColor.value = "#EDC7B7"});
+rainbow.addEventListener('click', () => handleButtonClick('rainbowPen'));
+burnBtn.addEventListener('click', () => handleButtonClick('burn'));
+dodgeBtn.addEventListener('click', () => handleButtonClick('dodge'));
 
 gridsVisibleBtn.addEventListener('click', () => {
+    let gridCell = document.querySelectorAll(".gridCell");
+
     if(visibleGrid == false)
     {
         visibleGrid = true;
-        gridsVisibleBtn.innerText = 'Hide Grids';
-        makeGrid();
+        gridsVisibleBtn.innerHTML = '&nbsp;&nbsp;Hide Grids';
+        gridCell.forEach(cell => cell.style.border = "0.1px solid black"); 
     }
     else
     {
         visibleGrid = false;
-        gridsVisibleBtn.innerText = 'Show Grids';
-        makeGrid();
+        gridsVisibleBtn.innerHTML = '&nbsp;Show Grids';
+        gridCell.forEach(cell => cell.style.border = ""); 
     }
 });
 
@@ -43,9 +74,7 @@ function makeGrid()
             gridCell.style.cssText = `width: ${100/gridSize.value}%; height: ${100/gridSize.value}%`; 
 
             if(visibleGrid === true)
-            {
                 gridCell.style.border = "0.1px solid black";
-            }
 
             gridContainer.appendChild(gridCell);
         }
@@ -73,15 +102,22 @@ function setupEventListener()
         
             if(clickInsideGrid === true)
             {
-                if(rainbowPen === false)
-                    cell.style.backgroundColor = penColor.value;
+                if(dodge === false && burn === false)
+                {
+                    if(rainbowPen === false)
+                        cell.style.backgroundColor = penColor.value;
+                    else
+                    {
+                        let r = getRandomColor();
+                        let g = getRandomColor();
+                        let b = getRandomColor();
+
+                        cell.style.backgroundColor = "rgb("+r+", "+g+", "+b+")";
+                    }
+                }
                 else
                 {
-                    let r = getRandomColor();
-                    let g = getRandomColor();
-                    let b = getRandomColor();
-
-                    cell.style.backgroundColor = "rgb("+r+", "+g+", "+b+")";
+                    
                 }
             }
         });    

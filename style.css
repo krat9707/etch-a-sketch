@@ -23,6 +23,7 @@ body {
     flex: 2;
     background-color: #EDC7B7;
     margin-top: 2vh;
+    margin-right: 5vh;
     height: 90vh;
     width: 90vh;
     display: flex;
@@ -63,21 +64,18 @@ button:hover {
     background-position: 99% 50%;
 }
 
-
 input[type=range] {
-    -webkit-appearance: none;
+    appearance: none;
     width: 50%;
     height: 15px;
     border-radius: 5px;  
     background: #EEE2DC;
     outline: none;
     opacity: 0.7;
-    -webkit-transition: .2s;
     transition: opacity .2s;
 }
   
 input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
     width: 25px;
     height: 25px;
@@ -87,7 +85,7 @@ input[type=range]::-webkit-slider-thumb {
 }
   
 input[type="color"] {
-	-webkit-appearance: none;
+    appearance: none;
 	border: none;
 	width: 15vh;
 	height: 5vh;
@@ -102,7 +100,7 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 15vh;
 }
 
-#buttonSet {
+#controls {
     display: flex;
     flex: 2;
     flex-flow : column wrap;
@@ -114,4 +112,15 @@ input[type="color"]::-webkit-color-swatch {
 label {
     display: block;
     margin: 1.5vh;
+}
+
+#buttonSet {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.activeBtn {
+    border: 1px solid rgba(223,190,106,0);
+    color: white;
+    background-position: 99% 50%;
 }

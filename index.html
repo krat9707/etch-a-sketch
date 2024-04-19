@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Etch Ā Sketch</title>
         <script src="functions.js" defer></script>
         <link rel="stylesheet" href="style.css">
@@ -10,19 +11,22 @@
 
     <body ondragstart="return false;" ondrop="return false;">
         <div id="wrapper">
-            <div id="buttonSet">
+            <div id="controls">
                 <label for="gridSizeSlider">Grid Size : 
                 <span id="currentGridSize">16 x 16</span></label>
                 <input type="range" id="gridSizeSlider" min="1" max="64" value="16">
                 <label for="penColor">Pick : 
                 <input type="color" id="penColor" value="#EEE2DC"> </label>
-                <button id="rainbowPenColor">Rainbow</button>
-                <button id="eraser">Eraser</button>
-                <button id="resetBtn">Reset</button>
-                <button id="toggleGridLines">Show Grids</button>
+                <div id="buttonSet">
+                    <button id="rainbowPenColor" class>Rainbow</button>
+                    <button id="dodge" class>Dodge</button>
+                    <button id="burn" class>Burn</button>
+                    <button id="toggleGridLines" class="">Show Grids</button>
+                    <button id="eraser" class>Eraser</button>
+                    <button id="resetBtn" class>Reset</button>
+                </div>
             </div>
             <div id="grid"></div>
-            <div id="blankDiv"></div>
         </div>
     </body>
 </html>
