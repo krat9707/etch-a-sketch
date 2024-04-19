@@ -124,3 +124,10 @@ label {
     color: white;
     background-position: 99% 50%;
 }
+
+footer {
+    text-align: center;
+    font-size: x-small;
+    letter-spacing: 0.15em;
+    margin-top: 2vh;
+}
